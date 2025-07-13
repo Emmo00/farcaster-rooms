@@ -28,6 +28,11 @@ module.exports =
 			key  : process.env.HTTPS_CERT_PRIVKEY || `${__dirname}/certs/server.key`
 		}
 	},
+	// database settings
+	database:
+	{
+		url: process.env.MONGODB_URI || 'mongodb://localhost:27017/farcaster-rooms',
+	},
 	// mediasoup settings.
 	mediasoup :
 	{
