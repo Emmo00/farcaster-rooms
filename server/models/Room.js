@@ -28,6 +28,26 @@ const RoomSchema = new mongoose.Schema(
       enum: ["public", "private", "unlisted"],
       default: "public",
     },
+    hasStarted: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    hasEnded: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    activeParticipantCount: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    totalParticipantCount: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
     scheduledFor: {
       type: Date,
       required: false,
