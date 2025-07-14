@@ -1,0 +1,25 @@
+{
+  "name": "farcaster-rooms",
+  "version": "1.0.0",
+  "description": "Live Audio on Farcaster",
+  "main": "backend/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm run build",
+    "dev": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev\"",
+    "start": "cd server && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emmo00/farcaster-rooms.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emmo00/farcaster-rooms/issues"
+  },
+  "homepage": "https://github.com/Emmo00/farcaster-rooms#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

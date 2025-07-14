@@ -7,7 +7,7 @@ const router = Router();
 router.use(authMiddleware);
 
 // create a new room
-router.post("/rooms", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const room = new Room(req.body);
     await room.save();
@@ -18,7 +18,7 @@ router.post("/rooms", async (req, res) => {
 });
 
 // get live rooms
-router.get("/rooms/live", async (req, res) => {
+router.get("/live", async (req, res) => {
   try {
     const liveRooms = await Room.find({
       visibility: "public",
@@ -32,7 +32,7 @@ router.get("/rooms/live", async (req, res) => {
 });
 
 // get upcoming rooms
-router.get("/rooms/upcoming", async (req, res) => {
+router.get("/upcoming", async (req, res) => {
   try {
     const upcomingRooms = await Room.find({
       visibility: "public",
@@ -47,7 +47,7 @@ router.get("/rooms/upcoming", async (req, res) => {
 });
 
 // mark a scheduled event as started
-router.post("/rooms/:id/start", async (req, res) => {
+router.post("/:id/start", async (req, res) => {
   try {
     const user = req.user;
     const room = await Room.findById(req.params.id);
@@ -72,4 +72,4 @@ router.post("/rooms/:id/start", async (req, res) => {
   }
 });
 
-exports = router;
+module.exports = router;
