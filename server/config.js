@@ -14,6 +14,11 @@ module.exports =
 {
 	// Listening hostname for browser app Vite development server.
 	domain : process.env.DOMAIN || 'localhost',
+	// configs for frontend
+	frontend:
+	{
+		buildDir: "../build",
+	},
 	// Signaling settings (protoo WebSocket server and HTTP API server).
 	https  :
 	{
@@ -24,20 +29,20 @@ module.exports =
 		// (optional) if tls is not set, it will use http instead
 		tls        :
 		{
-			cert : process.env.HTTPS_CERT_FULLCHAIN || `${__dirname}/certs/server.cert`,
+			cert : process.env.HTTPS_CERT_FULLCHAIN || `${__dirname}/certs/server.crt`,
 			key  : process.env.HTTPS_CERT_PRIVKEY || `${__dirname}/certs/server.key`
 		}
 	},
 	// database settings
 	database:
 	{
-		url: process.env.MONGODB_URI || 'mongodb://localhost:27017/farcaster-rooms',
+		uri: process.env.MONGODB_URI || 'mongodb://localhost:27017/farcaster-rooms',
 	},
 	// mediasoup settings.
 	mediasoup :
 	{
 		// Number of mediasoup workers to launch.
-		numWorkers     : Object.keys(os.cpus()).length,
+		numWorkers     : 1, // Object.keys(os.cpus()).length,
 		// mediasoup WorkerSettings.
 		// See https://mediasoup.org/documentation/v3/mediasoup/api/#WorkerSettings
 		workerSettings :

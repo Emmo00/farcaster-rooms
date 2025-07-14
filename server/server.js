@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require("dotenv").config();
 
 process.title = "-server";
 process.env.DEBUG = process.env.DEBUG || "*INFO* *WARN* *ERROR*";
@@ -26,6 +27,9 @@ const utils = require("./lib/utils");
 const Room = require("./lib/Room");
 const interactiveServer = require("./lib/interactiveServer");
 const interactiveClient = require("./lib/interactiveClient");
+const appRouter = require("./routes/index");
+const { fillMetaTags } = require("./middlewares/metatags.middleware");
+const path = require("path");
 
 const logger = new Logger();
 
@@ -156,7 +160,7 @@ async function runMediasoupWorkers() {
       const usage = await worker.getResourceUsage();
 
       logger.info(
-        "mediasoup Worker resource usage [pid:%d]: %o",
+        "mediasoup Wo9rker resource usage [pid:%d]: %o",
         worker.pid,
         usage
       );
@@ -176,7 +180,31 @@ async function createExpressApp() {
 
   expressApp = express();
 
+  // Serve static files from React build
+  expressApp.use(express.static(path.join(__dirname, "../build")));
+
+  // allow all for cors
+  expressApp.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, DELETE, OPTIONS"
+    );
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    next();
+  });
+
+  // log every request
+  expressApp.use((req, res, next) => {
+    logger.info(`HTTP ${req.method} ${req.originalUrl} from ${req.ip}`);
+    next();
+  });
+
   expressApp.use(bodyParser.json());
+
+  expressApp.use(bodyParser.urlencoded({ extended: true }));
+
+  expressApp.use(appRouter);
 
   /**
    * For every API request, verify that the roomId in the path matches and
@@ -431,6 +459,11 @@ async function createExpressApp() {
       }
     }
   );
+
+  /**
+   * Fall Back
+   */
+  expressApp.get("*", fillMetaTags);
 
   /**
    * Error handler.
