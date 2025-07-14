@@ -1,0 +1,127 @@
+.
+├── README.md
+├── app
+│   ├── LICENSE
+│   ├── README.md
+│   ├── bin
+│   │   ├── index.js
+│   │   └── init.js
+│   ├── components.json
+│   ├── index.d.ts
+│   ├── next.config.ts
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.mjs
+│   ├── public
+│   │   ├── icon.png
+│   │   └── splash.png
+│   ├── scripts
+│   │   ├── build.js
+│   │   ├── cleanup.js
+│   │   ├── deploy.js
+│   │   └── dev.js
+│   ├── src
+│   │   ├── app
+│   │   │   ├── api
+│   │   │   │   ├── auth
+│   │   │   │   │   └── [...nextauth]
+│   │   │   │   │       └── route.ts
+│   │   │   │   ├── opengraph-image
+│   │   │   │   │   └── route.tsx
+│   │   │   │   ├── send-notification
+│   │   │   │   │   └── route.ts
+│   │   │   │   ├── users
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── webhook
+│   │   │   │       └── route.ts
+│   │   │   ├── app.tsx
+│   │   │   ├── create-room
+│   │   │   │   └── page.tsx
+│   │   │   ├── favicon.ico
+│   │   │   ├── globals.css
+│   │   │   ├── home
+│   │   │   │   └── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   ├── profile
+│   │   │   │   └── me
+│   │   │   │       └── page.tsx
+│   │   │   ├── providers.tsx
+│   │   │   ├── rooms
+│   │   │   │   └── [id]
+│   │   │   │       └── page.tsx
+│   │   │   └── share
+│   │   │       └── [fid]
+│   │   │           └── page.tsx
+│   │   ├── auth.ts
+│   │   ├── components
+│   │   │   ├── Avatar.tsx
+│   │   │   ├── RoomCard.tsx
+│   │   │   ├── SpeakerModal.tsx
+│   │   │   ├── providers
+│   │   │   │   └── WagmiProvider.tsx
+│   │   │   └── ui
+│   │   │       ├── Button.tsx
+│   │   │       ├── Footer.tsx
+│   │   │       ├── Header.tsx
+│   │   │       ├── Share.tsx
+│   │   │       ├── input.tsx
+│   │   │       ├── label.tsx
+│   │   │       ├── tabs
+│   │   │       │   ├── ActionsTab.tsx
+│   │   │       │   ├── ContextTab.tsx
+│   │   │       │   ├── HomeTab.tsx
+│   │   │       │   ├── WalletTab.tsx
+│   │   │       │   └── index.ts
+│   │   │       └── wallet
+│   │   │           ├── SendEth.tsx
+│   │   │           ├── SendSolana.tsx
+│   │   │           ├── SignEvmMessage.tsx
+│   │   │           ├── SignIn.tsx
+│   │   │           ├── SignSolanaMessage.tsx
+│   │   │           └── index.ts
+│   │   ├── config.ts
+│   │   ├── data
+│   │   │   └── mockData.ts
+│   │   ├── hooks
+│   │   │   └── useNeynarUser.ts
+│   │   ├── lib
+│   │   │   ├── constants.ts
+│   │   │   ├── errorUtils.tsx
+│   │   │   ├── kv.ts
+│   │   │   ├── neynar.ts
+│   │   │   ├── notifs.ts
+│   │   │   ├── truncateAddress.ts
+│   │   │   └── utils.ts
+│   │   ├── screens
+│   │   │   └── WelcomeScreen.tsx
+│   │   └── types
+│   │       └── index.ts
+│   ├── tailwind.config.ts
+│   ├── tsconfig.json
+│   └── vercel.json
+├── project.tree
+└── server
+    ├── config.js
+    ├── connect.js
+    ├── lib
+    │   ├── Bot.js
+    │   ├── Logger.js
+    │   ├── Room.js
+    │   ├── interactiveClient.js
+    │   ├── interactiveServer.js
+    │   └── utils.js
+    ├── middlewares
+    │   └── auth.middleware.js
+    ├── models
+    │   └── Room.js
+    ├── package-lock.json
+    ├── package.json
+    ├── routes
+    │   ├── index.js
+    │   ├── rooms.js
+    │   └── user.js
+    ├── run.sh
+    └── server.js
+
+37 directories, 88 files
